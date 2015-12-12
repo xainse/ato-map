@@ -1,0 +1,55 @@
+*, html, body {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+body {
+    background-color: #483e3e;
+}
+.conteiner {
+    position: relative;
+    margin: 0 auto;
+    width: 1824px;
+}
+.one-map {
+    margin: 0 4px 0 0;
+    position: relative;
+}
+.date-hint {
+    position: absolute;
+    padding: 3px 10px 4px;
+    background: url(../img/app/bg/bg-grey.png) repeat 0 0 transparent;
+    color: #fff;
+    right: 1px;
+    bottom: 1px;
+    border-radius: 2px;
+
+}
+/* 5-ть фото */
+@media (max-width: 1825px ) {
+    .conteiner {
+        width: 1520px;
+    }
+}
+/* 4-ть фото */
+@media (max-width: 1520px ) {
+    .conteiner {
+        width: 1216px;
+    }
+}
+/* 3-ть фото */
+@media (max-width: 1216px ) {
+    .conteiner {
+        width: 912px;
+    }
+}
+/* 2-ть фото */
+@media (max-width: 912px ) {
+    .conteiner {
+        width: 608px;
+    }
+}
+/* 2-ть фото */
+@media (max-width: 608px ) {
+    .conteiner {
+        width: 304px;
+    }
+}
