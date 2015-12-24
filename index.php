@@ -6,6 +6,15 @@
 </head>
 <body>
 <!-- Yandex.Metrika counter --><script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter34162440 = new Ya.Metrika({ id:34162440, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="https://mc.yandex.ru/watch/34162440" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+	<header class="header">
+		<h1>Карта бойових дій в зоні АТО (Анти-терористичної операції)</h1>
+
+		<div class="copyright">
+			&copy; 2015, <a href="https://github.com/xainse/ato-map" target="_blank">@xainse</a>&nbsp;
+			<a title="ІНФОРМАЦІЙНО-АНАЛІТИЧНИЙ ЦЕНТР - НАЦІОНАЛЬНОЇ БЕЗПЕКИ УКРАЇНИ" href="http://mediarnbo.org/" target="_blank">www.mediarnbo.org</a>
+		</div>
+	</header>
+	<div class="header-placeholder"></div>
 	<div class="conteiner" id="map-conteiner">
 
 	</div>
@@ -45,8 +54,8 @@ function prepareMap() {
 					'<img src="{imgLink}" width="{iW}" height="{iH}" alt="{description}" />'+
 					'<span class="date-hint">{description}</span></a>';
 
-//	var startDay = new Date( 2014, 8, 12 ); // Дата коли можна знайти найпершу картинку із картою із зони АТО
-	var startDay = new Date( 2015, 12-1, 10 ); // Дата коли можна знайти найпершу картинку із картою із зони АТО
+	var startDay = new Date( 2014, 8, 12 ); // Дата коли можна знайти найпершу картинку із картою із зони АТО
+//	var startDay = new Date( 2015, 12-1, 10 ); // Дата коли можна знайти найпершу картинку із картою із зони АТО
 
 	var oneDay = 60*60*24*1000; // Кількість мілісекунд
 	var toDay = new Date();
