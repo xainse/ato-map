@@ -7,16 +7,8 @@
 <body>
 <!-- Yandex.Metrika counter --><script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter34162440 = new Ya.Metrika({ id:34162440, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="https://mc.yandex.ru/watch/34162440" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
 	<div class="conteiner" id="map-conteiner">
-		<!--<a class="fancybox fancybox-button" data-fancybox-group="gallery" href="http://mediarnbo.org/wp-content/uploads/2014/07/KARTA-ATO-19.07.jpg"><img src="http://mediarnbo.org/wp-content/uploads/2014/07/KARTA-ATO-19.07.jpg" width="300" height="249" alt="{description}"></a>
-		<a class="fancybox fancybox-button" data-fancybox-group="gallery" href="http://mediarnbo.org/wp-content/uploads/2014/07/KARTA-ATO-22.071.jpg"><img src="http://mediarnbo.org/wp-content/uploads/2014/07/KARTA-ATO-22.071.jpg" width="300" height="249" alt="{description}"></a>
-		<a class="fancybox fancybox-button" data-fancybox-group="gallery" href="http://mediarnbo.org/wp-content/uploads/2014/07/KARTA-ATO-23.072.jpg">
-			<img src="http://mediarnbo.org/wp-content/uploads/2014/07/KARTA-ATO-23.072.jpg" width="300" height="249" alt="{description}"></a>
-			<a class="fancybox fancybox-button" data-fancybox-group="gallery" href="http://mediarnbo.org/wp-content/uploads/2014/07/KARTA-ATO-25.071.jpg">
-			<img src="http://mediarnbo.org/wp-content/uploads/2014/07/KARTA-ATO-25.071-300x249.jpg" width="300" height="249" alt="{description}"></a>
-		<a class="fancybox fancybox-button" data-fancybox-group="gallery" href="http://mediarnbo.org/wp-content/uploads/2014/07/28-07.jpg"><img src="http://mediarnbo.org/wp-content/uploads/2014/07/28-07-300x249.jpg" width="300" height="249" alt="{description}"></a>-->
+
 	</div>
-	
-	
 <!-- Всі необхідні бібліотеки і скрипти -->
 <!-- TODO Треба написати парсер, який буде кожен день стягувати нові картинки -->
 	<link rel="stylesheet" type="text/css" href="/css/style.css" media="screen" />
@@ -46,18 +38,20 @@ function prepareMap() {
 		timezone: 'UTC'
 	};
 
-	var imgBaseUrl = 'http://ato-map.dev/img/photos/';
+	var imgBaseUrl 	  =  window.location.href + 'img/photos/';
 	var imgBigTplLink = '{base}big-{year}-{month}-{day}.jpg';
 	var imgSmlTplLink = '{base}sml-{year}-{month}-{day}.jpg';
-	var imgSmlTpl = '<a class="fancybox fancybox-button one-map" data-fancybox-group="gallery" href="{iBigLink}">'+
+	var imgSmlTpl = '<a class="fancybox fancybox-button one-map" title="{description}" data-fancybox-group="gallery" href="{iBigLink}">'+
 					'<img src="{imgLink}" width="{iW}" height="{iH}" alt="{description}" />'+
 					'<span class="date-hint">{description}</span></a>';
 
-	var startDay = new Date( 2014, 8, 12 ); // Дата коли можна знайти найпершу картинку із картою із зони АТО
-	var toDay = new Date();
+//	var startDay = new Date( 2014, 8, 12 ); // Дата коли можна знайти найпершу картинку із картою із зони АТО
+	var startDay = new Date( 2015, 12-1, 10 ); // Дата коли можна знайти найпершу картинку із картою із зони АТО
+
 	var oneDay = 60*60*24*1000; // Кількість мілісекунд
+	var toDay = new Date();
 	var dayLeft = Math.round((toDay.getTime() - startDay.getTime())/oneDay); 
-	
+
 	var template = '';
 	var img = [];
 	var tmpUpload = [];
@@ -65,14 +59,14 @@ function prepareMap() {
 	for (var i=1; i<dayLeft; i++) {
 //		var cklDate = new Date(startDay.getTime() + oneDay * i);
 		var cklDate = new Date(toDay.getTime() - oneDay * i);
-
 		var imgData = {
 			'base' : imgBaseUrl, 
 			'year' : cklDate.getFullYear(),
-			'month': cklDate.getMonth(),
+			'month': cklDate.getMonth()+1,
 			'day'  : cklDate.getDate()
 		};
-		var d = imgData['day']+'/'+imgData['month']+'/'+imgData['year'];
+
+		var d = imgData['month']+'/'+imgData['day']+'/'+imgData['year'];
 
 		if (imgData['month'] != 0 && new Date(d) != 'Invalid Date') {
 			imgData['day'] = imgData['day']<10?'0'+imgData['day']:imgData['day'];
@@ -85,7 +79,7 @@ function prepareMap() {
 				'imgLink'	: cklImgLinkSml,
 				'iW'		: 300,
 				'iH'		: 249,
-				'description' : cklDate.toLocaleString("ua", options)
+				'description' : cklDate.toLocaleString("uk", options)
 			});
 
 			var immg = new Image();
@@ -109,12 +103,17 @@ $(function(){
 		prevEffect		: 'none',
 		nextEffect		: 'none',
 		closeBtn		: true,
+		titleShow		: true,
 		helpers		: {
 			title	: { type : 'inside' },
 			buttons	: {}
 		}
 	});	
 });
+wln = function(vr) {
+	vr = vr?vr:'ok';
+	console.log(vr);
+}
 </script>
 
 </body>

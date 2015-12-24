@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: xain
+ * User: @xainse
  * Date: 10.12.2015
  * Time: 21:24
  * http://ru.slovoidilo.ua/articles/4285/2014-08-16/karta-ato-po-sostoyaniyu-na-16-avgusta-v-dinamike.html
@@ -16,9 +16,10 @@ function downloadAllImgs($src='', $dest='') {
     echo '1';
     //$startDay = "2014-07-28";
     $errFile = 'errors.log';
-    $startDay = "2014-08-13";
+//    $startDay = "2014-08-13";
+    $startDay = "2015-12-09";
     $startTimestamp = strtotime($startDay);
-    $stopDay = "2015-12-10";
+    $stopDay = "2015-12-24";
     $oneDay = 60*60*24;
     $pathSave = 'img/photos/';
     $smlImgWidth = 300;
@@ -57,6 +58,12 @@ function downloadAllImgs($src='', $dest='') {
     fclose($handle);
 }
 
+/**
+ * Create a small thumbnail with the specified width
+ * @param $newWidth - int
+ * @param $targetFile
+ * @param $originalFile
+ */
 function resize($newWidth, $targetFile, $originalFile) {
 
     $info = getimagesize($originalFile);
