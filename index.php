@@ -10,7 +10,7 @@
 		<h1>Карта бойових дій в зоні АТО (Анти-терористичної операції)</h1>
 
 		<div class="copyright">
-			&copy; 2015, <a href="https://github.com/xainse/ato-map" target="_blank">@xainse</a>&nbsp;
+			&copy;&nbsp;2015<?php $y=date('Y');$y!='2015'?'&mdash;'.$y:''?>, <a href="https://github.com/xainse/ato-map" target="_blank">@xainse</a>&nbsp;
 			<a title="ІНФОРМАЦІЙНО-АНАЛІТИЧНИЙ ЦЕНТР - НАЦІОНАЛЬНОЇ БЕЗПЕКИ УКРАЇНИ" href="http://mediarnbo.org/" target="_blank">www.mediarnbo.org</a>
 		</div>
 	</header>
