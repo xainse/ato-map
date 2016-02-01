@@ -36,6 +36,7 @@
 	<script type="text/javascript" src="fancybox/jquery.fancybox.js?v=2.1.5"></script>
 	<script type="text/javascript" src="/js/uikit.min.js"></script>
 	<script type="text/javascript" src="/js/uikit/datepicker.min.js"></script>
+	<script type="text/javascript" src="/js/ato-scripts.js"></script>
 
 <script>
 // Розширення класу "рядка", для використання як темплейту
@@ -106,6 +107,7 @@ function prepareMap() {
 			};
 			immg.onerror = function(){
 				img[i] = '';
+				console.log('can\'t upload the image: '+immg.src);
 			};
 			immg.src = cklImgLinkSml;
 			tmpUpload[i] = immg;
@@ -132,7 +134,11 @@ $(function(){
 		return false;
 	});
 
-	prepareMap();
+	//prepareMap();
+
+	var atoMap = new aMap();
+	atoMap.displayfirst50();
+
 	$(".fancybox-button").fancybox({
 		prevEffect		: 'none',
 		nextEffect		: 'none',
