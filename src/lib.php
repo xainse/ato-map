@@ -10,8 +10,17 @@ define('ONE_DAY', 60*60*24);
 define('ERRORS_FILE','errors.log');
 define('SOURCE_LINK', 'http://mediarnbo.org/wp-content/uploads/');
 define('PATH_SAVE', '/sata1/home/users/onlinegam/www/ato-map.xain.in.ua/img/photos/');
+//define('PATH_SAVE', 'd:\OpenServer\domains\ato-map.dev\img\manualy\\');
 define('SML_IMG_WIDTH', 300);
 define('HOST', 'http://ato-map.xain.in.ua/');
+
+/**
+  * Link that wasn't be downloaded:
+  * - http://mediarnbo.org/wp-content/uploads/2016/02/04-02.jpg
+  * - http://mediarnbo.org/wp-content/uploads/2016/02/11-02.jpg
+    - http://mediarnbo.org/wp-content/uploads/2016/02/12-02.jpg
+  *
+  */
 
 
 /**
@@ -21,9 +30,9 @@ function downloadAllImgs() {
     echo '1';
     //$startDay = "2014-07-28";
 //    $startDay = "2014-08-13";
-    $startDay = "2015-12-09";
+    $startDay = "2016-02-07";
     $startTimestamp = strtotime($startDay);
-    $stopDay = "2015-12-24";
+    $stopDay = "2016-02-11";
 
     $countDays = (strtotime($stopDay) - strtotime($startDay))/ONE_DAY;
 
@@ -36,6 +45,7 @@ function downloadAllImgs() {
 /**
  * Сачати картинку за вказану дату
  * @param $timestamp
+ *  
  */
 function getOneMap($timestamp) {
 

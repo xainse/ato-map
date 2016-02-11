@@ -15,6 +15,8 @@ require "lib.php";
 
 getOneMap(time() - ONE_DAY);
 
+//downloadAllImgs();
+
 function wln($var='ok'){
     echo '<pre>';
     print_r($var);
