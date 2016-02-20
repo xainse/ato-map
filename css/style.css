@@ -60,6 +60,10 @@ body {
             color: #e9e9e9;
             font-family: Verdana, 'lucida console', sans-serif;
         }
+            .copyright a:hover {
+                color: #e9e9e9;
+                text-decoration: underline;
+            }
 
 /* Calendar */
 .calendar-icon {
