@@ -14,9 +14,13 @@ body {
     width: 1824px;
 }
 .one-map {
-    margin: 0 4px 0 0;
+    margin: 0 3px 3px 0;
     position: relative;
+    /*display: inline-block;*/
 }
+    .one-map img {
+        margin-bottom: 3px;
+    }
 .date-hint {
     position: absolute;
     padding: 3px 10px 4px;

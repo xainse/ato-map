@@ -70,6 +70,8 @@ function getOneMap($timestamp) {
         fwrite($handle,$s);
     }
 
+    wln($url.$imgName);
+
     sleep(1);
     if (file_exists(PATH_SAVE.$source)){
         resize(SML_IMG_WIDTH, PATH_SAVE.$target, PATH_SAVE.$source);
