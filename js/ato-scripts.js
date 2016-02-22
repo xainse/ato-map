@@ -42,6 +42,8 @@ function aMap() {
         '<img src="{imgLink}" width="{iW}" height="{iH}" alt="{description}" />'+
         '<span class="date-hint">{description}</span></a>';
 
+    var tplLoadMoreBtn = '<a href="#loadmore" class="one-map btn-load-more" id="load-more"><span>Load More</span></a>';
+
     // Дата коли можна знайти найпершу картинку із картою із зони АТО
     var startDay = new Date( 2014, 8-1, 12 );
 
@@ -96,7 +98,7 @@ function aMap() {
             img[i] = self.getOneImg(cklDate);
         }
 
-        return img.join('');
+        return img.join('') + tplLoadMoreBtn;
     };
 
     /**
@@ -154,7 +156,7 @@ function aMap() {
      */
     this.displayfirst50 = function() {
 
-        var startDay = new Date(2016, 1, 1);
+        var startDay = new Date(toDay.getTime()-(48*oneDay));
         var images50HTML = self.generateGallery(startDay, toDay);
         $(mapConteinerID).append(images50HTML);
     };
