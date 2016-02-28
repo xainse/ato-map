@@ -35,7 +35,7 @@ function aMap() {
     var pageCount = 48;
 
     // Link to the folder with photos
-    var imgBaseUrl    =  window.location.href + 'img/photos/';
+    var imgBaseUrl    =  window.location.pathname + 'img/photos/';
 
     // Template for the path to the small photo
     var imgBigTplLink = '{base}big-{year}-{month}-{day}.jpg';
@@ -48,7 +48,7 @@ function aMap() {
         '<img src="{imgLink}" width="{iW}" height="{iH}" alt="{description}" />'+
         '<span class="date-hint">{description}</span></a>';
 
-    var tplLoadMoreBtn = '<a href="#loadmore" class="one-map btn-load-more" id="load-more"><span>Load More</span></a>';
+    var tplLoadMoreBtn = '<a href="#loadmore" class="one-map btn-load-more" id="load-more" onclick="atoMap.loadMore(); return false;"><span>Load More</span></a>';
 
     /**
      * ID of load more button
@@ -158,7 +158,7 @@ function aMap() {
 
             };
             immg.onerror = function(){
-                img[i] = '';
+                //img[i] = '';
                 console.log('can\'t upload the image: '+immg.src);
             };
             immg.src = cklImgLinkSml;
@@ -183,12 +183,15 @@ function aMap() {
 
 
     this.loadMore = function() {
-
         var startDay = new Date(alredyLoadedDay.getTime()-(pageCount*oneDay+oneDay));
         var finishDay = new Date(alredyLoadedDay.getTime()-oneDay);
         var images50HTML = self.generateGallery(startDay, finishDay);
+
+        $(IDBtnLoad+' span').addClass('loader');
+
         $(images50HTML).insertBefore(IDBtnLoad);
         self.initGallery();
+        $(IDBtnLoad+' span').removeClass('loader');
     };
 
 
