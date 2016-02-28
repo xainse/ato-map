@@ -28,6 +28,12 @@ function aMap() {
         timezone: 'UTC'
     };
 
+    /**
+     * Count of images for one image
+     * @type {number}
+     */
+    var pageCount = 48;
+
     // Link to the folder with photos
     var imgBaseUrl    =  window.location.href + 'img/photos/';
 
@@ -44,10 +50,22 @@ function aMap() {
 
     var tplLoadMoreBtn = '<a href="#loadmore" class="one-map btn-load-more" id="load-more"><span>Load More</span></a>';
 
+    /**
+     * ID of load more button
+     * @type {string}
+     */
+    var IDBtnLoad = '#load-more';
+
     // Дата коли можна знайти найпершу картинку із картою із зони АТО
     var startDay = new Date( 2014, 8-1, 12 );
 
     var oneDay = 60*60*24*1000; // Кількість мілісекунд
+
+    /**
+     * Last day already loaded on the screen
+     * @type {date}
+     */
+    var alredyLoadedDay = oneDay;
 
     /**
      * Start date for gallery
@@ -98,7 +116,9 @@ function aMap() {
             img[i] = self.getOneImg(cklDate);
         }
 
-        return img.join('') + tplLoadMoreBtn;
+        alredyLoadedDay = cklDate;
+
+        return img.join('');
     };
 
     /**
@@ -157,7 +177,31 @@ function aMap() {
     this.displayfirst50 = function() {
 
         var startDay = new Date(toDay.getTime()-(48*oneDay));
-        var images50HTML = self.generateGallery(startDay, toDay);
+        var images50HTML = self.generateGallery(startDay, toDay) + tplLoadMoreBtn;
         $(mapConteinerID).append(images50HTML);
     };
+
+
+    this.loadMore = function() {
+
+        var startDay = new Date(alredyLoadedDay.getTime()-(pageCount*oneDay+oneDay));
+        var finishDay = new Date(alredyLoadedDay.getTime()-oneDay);
+        var images50HTML = self.generateGallery(startDay, finishDay);
+        $(images50HTML).insertBefore(IDBtnLoad);
+        self.initGallery();
+    };
+
+
+    this.initGallery = function() {
+        $(".fancybox-button").fancybox({
+            prevEffect		: 'none',
+            nextEffect		: 'none',
+            closeBtn		: true,
+            titleShow		: true,
+            helpers		: {
+                title	: { type : 'inside' },
+                buttons	: {}
+            }
+        });
+    }
 };

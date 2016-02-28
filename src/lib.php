@@ -9,10 +9,15 @@
 define('ONE_DAY', 60*60*24);
 define('ERRORS_FILE','errors.log');
 define('SOURCE_LINK', 'http://mediarnbo.org/wp-content/uploads/');
-define('PATH_SAVE', '/sata1/home/users/onlinegam/www/ato-map.xain.in.ua/img/photos/');
-//define('PATH_SAVE', 'd:\OpenServer\domains\ato-map.dev\img\manualy\\');
+
+//define('PATH_SAVE', '/sata1/home/users/onlinegam/www/ato-map.xain.in.ua/img/photos/');
+define('PATH_SAVE', 'd:\OpenServer\domains\ato-map.dev\img\manualy\\');
+
 define('SML_IMG_WIDTH', 300);
 define('HOST', 'http://ato-map.xain.in.ua/');
+
+define('FILE_NAME_PREFIX_BIG', 'big');
+define('FILE_NAME_PREFIX_SML', 'sml');
 
 /**
   * Link that wasn't be downloaded:
@@ -59,10 +64,11 @@ function getOneMap($timestamp) {
     // http://mediarnbo.org/wp-content/uploads/2014/08/15-08.jpg
     $url = SOURCE_LINK . $dYear .'/'.$dMonth.'/';
     $imgName = $dDay.'-'.$dMonth.'.jpg';
-    $handle = fopen(ERRORS_FILE, 'w');
 
-    $source = 'big-'.$dYear.'-'.$dMonth.'-'.$dDay.'.jpg';
-    $target = 'sml-'.$dYear.'-'.$dMonth.'-'.$dDay.'.jpg';
+    $handle = fopen(ERRORS_FILE, 'w'); // file to write errors
+
+    $source = getFilenameOnDiskBig($timestamp);
+    $target = getFilenameOnDiskSml($timestamp);
     try {
         copy ($url.$imgName, PATH_SAVE.$source);
     } catch (Exception $e) {
@@ -70,7 +76,7 @@ function getOneMap($timestamp) {
         fwrite($handle,$s);
     }
 
-    wln($url.$imgName);
+//    wln($url.$imgName);
 
     sleep(1);
     if (file_exists(PATH_SAVE.$source)){
@@ -90,6 +96,49 @@ function getTodayMap() {
     getOneMap(time());
 }
 
+/**
+ * Create link to source file of map by timestamp
+ * @param $timestamp
+ * @return string
+ */
+function getLinkToSourceFile($timestamp) {
+    $dYear = date('Y', $timestamp);
+    $dMonth = date('m', $timestamp);
+    $dDay = date('d', $timestamp);
+
+    $url = SOURCE_LINK . $dYear .'/'.$dMonth.'/';
+    $imgName = $dDay.'-'.$dMonth.'.jpg';
+
+    return $url.$imgName;
+}
+
+/**
+ * Create filename of the big image from timestamp
+ * @param $timestamp
+ * @return string
+ */
+function getFilenameOnDiskBig($timestamp) {
+
+    $dYear = date('Y', $timestamp);
+    $dMonth = date('m', $timestamp);
+    $dDay = date('d', $timestamp);
+
+    return FILE_NAME_PREFIX_BIG.'-'.$dYear.'-'.$dMonth.'-'.$dDay.'.jpg';
+}
+
+/**
+ * Create filename of the sml image from timestamp
+ * @param $timestamp
+ * @return string
+ */
+function getFilenameOnDiskSml($timestamp) {
+
+    $dYear = date('Y', $timestamp);
+    $dMonth = date('m', $timestamp);
+    $dDay = date('d', $timestamp);
+
+    return FILE_NAME_PREFIX_SML.'-'.$dYear.'-'.$dMonth.'-'.$dDay.'.jpg';
+}
 
 /**
  * Create a small thumbnail with the specified width
@@ -116,4 +165,14 @@ function resize($newWidth, $targetFile, $originalFile) {
         unlink($targetFile);
     }
     $image_save_func($tmp, $targetFile);
+}
+
+/**
+ * Debuging
+ * @param string $var
+ */
+function wln($var='ok'){
+    echo '<pre>';
+    print_r($var);
+    echo '</pre>';
 }

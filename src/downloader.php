@@ -13,14 +13,8 @@ require "lib.php";
 //downloadAllImgs();
 //getTodayMap();
 
-getOneMap(strtotime('2016-02-15'));
-getOneMap(strtotime('2016-02-17'));
+getOneMap(strtotime('2016-02-23'));
+getOneMap(strtotime('2016-02-24'));
 
 //downloadAllImgs();
-
-function wln($var='ok'){
-    echo '<pre>';
-    print_r($var);
-    echo '</pre>';
-}
 

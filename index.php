@@ -138,7 +138,7 @@ $(function(){
 
 	//prepareMap();
 
-	var atoMap = new aMap();
+	atoMap = new aMap();
 	atoMap.displayfirst50();
 
 	$(".fancybox-button").fancybox({
