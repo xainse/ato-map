@@ -10,8 +10,11 @@ define('ONE_DAY', 60*60*24);
 define('ERRORS_FILE','errors.log');
 define('SOURCE_LINK', 'http://mediarnbo.org/wp-content/uploads/');
 
-//define('PATH_SAVE', '/sata1/home/users/onlinegam/www/ato-map.xain.in.ua/img/photos/');
-define('PATH_SAVE', 'd:\OpenServer\domains\ato-map.dev\img\manualy\\');
+if ($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
+    define('PATH_SAVE', 'd:\OpenServer\domains\ato-map.dev\img\manualy\\');    
+} else {
+    define('PATH_SAVE', '/sata1/home/users/onlinegam/www/ato-map.xain.in.ua/img/photos/');   
+}
 
 define('SML_IMG_WIDTH', 300);
 define('HOST', 'http://ato-map.xain.in.ua/');

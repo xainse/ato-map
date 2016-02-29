@@ -12,6 +12,8 @@ require "lib.php";
 
 $weekAgo = time() - ONE_DAY*7;
 
+print_r("ATO MAP. check downloaded images\n");
+
 for ($i = 0; $i < 7; $i++) {
 
     $timestamp = $weekAgo + ONE_DAY*$i;
@@ -25,8 +27,8 @@ for ($i = 0; $i < 7; $i++) {
 
         copy ($sourceMapFile, PATH_SAVE.$bigMapFile);
         resize(SML_IMG_WIDTH, PATH_SAVE.$smlMapFile, PATH_SAVE.$bigMapFile);
-        wln('Save img: '.$bigMapFile);
+        print_r('Save img: '.$bigMapFile ."\n");
     } else {
-        wln('File exist: '.$bigMapFile);
+        print_r('File exist: '.$bigMapFile ."\n");
     }
 }
