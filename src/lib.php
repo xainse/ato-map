@@ -30,7 +30,6 @@ define('FILE_NAME_PREFIX_SML', 'sml');
   *
   */
 
-
 /**
  * download file and save to destination
  */
