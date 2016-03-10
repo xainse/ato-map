@@ -27,8 +27,8 @@ for ($i = 0; $i < 7; $i++) {
 
         copy ($sourceMapFile, PATH_SAVE.$bigMapFile);
         resize(SML_IMG_WIDTH, PATH_SAVE.$smlMapFile, PATH_SAVE.$bigMapFile);
-        print_r('Save img: '.$bigMapFile ."\n");
+        print_r($i.'. Save img: '.$bigMapFile ."\n");
     } else {
-        print_r('File exist: '.$bigMapFile ."\n");
+        print_r($i.'. File exist: '.$bigMapFile ."\n");
     }
 }
