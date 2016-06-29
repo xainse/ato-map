@@ -26,7 +26,7 @@ define('FILE_NAME_PREFIX_SML', 'sml');
   * Link that wasn't be downloaded:
   * - http://mediarnbo.org/wp-content/uploads/2016/02/04-02.jpg
   * - http://mediarnbo.org/wp-content/uploads/2016/02/11-02.jpg
-    - http://mediarnbo.org/wp-content/uploads/2016/02/12-02.jpg
+  * - http://mediarnbo.org/wp-content/uploads/2016/02/12-02.jpg
   *
   */
 
