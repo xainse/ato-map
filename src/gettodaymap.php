@@ -8,4 +8,5 @@
 
 require "lib.php";
 
+print_r(">>>file: gettodaymap.php >>> \r\n <br>");
 getTodayMap();

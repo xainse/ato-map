@@ -6,12 +6,15 @@
  * Time: 11:33
  */
 
-// TODO: move out the config data to the separated file
 define('ONE_DAY', 60*60*24);
 define('ERRORS_FILE','errors.log');
 define('SOURCE_LINK', 'http://mediarnbo.org/wp-content/uploads/');
 
-define('PATH_SAVE', '/sata1/home/users/onlinegam/www/ato-map.xain.in.ua/img/photos/');   
+// if (!empty($_SERVER['SERVER_ADDR']) && $_SERVER['SERVER_ADDR'] == '127.0.0.1') {
+//     define('PATH_SAVE', 'd:\OpenServer\domains\ato-map.dev\img\manualy\\');    
+//} else {
+    define('PATH_SAVE', '/sata1/home/users/onlinegam/www/ato-map.xain.in.ua/img/photos/');   
+//}
 
 define('SML_IMG_WIDTH', 300);
 define('HOST', 'http://ato-map.xain.in.ua/');
@@ -19,6 +22,13 @@ define('HOST', 'http://ato-map.xain.in.ua/');
 define('FILE_NAME_PREFIX_BIG', 'big');
 define('FILE_NAME_PREFIX_SML', 'sml');
 
+/**
+  * Link that wasn't be downloaded:
+  * - http://mediarnbo.org/wp-content/uploads/2016/02/04-02.jpg
+  * - http://mediarnbo.org/wp-content/uploads/2016/02/11-02.jpg
+    - http://mediarnbo.org/wp-content/uploads/2016/02/12-02.jpg
+  *
+  */
 
 /**
  * download file and save to destination

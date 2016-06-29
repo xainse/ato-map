@@ -1,0 +1,6 @@
+User-agent: *
+
+# system
+Disallow: /src*
+
+Host: ato-map.xain.in.ua
