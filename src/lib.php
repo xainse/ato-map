@@ -11,7 +11,7 @@ define('ERRORS_FILE','errors.log');
 define('SOURCE_LINK', 'http://mediarnbo.org/wp-content/uploads/');
 
  if (!empty($_SERVER['SERVER_ADDR']) && $_SERVER['SERVER_ADDR'] == '127.0.0.1') {
-     define('PATH_SAVE', 'd:\OpenServer\domains\ato-map.dev\img\manually\\');
+     define('PATH_SAVE', 'E:\OpenServer\domains\ato-map.dev\img\manually\\');
 } else {
     define('PATH_SAVE', '/sata1/home/users/onlinegam/www/ato-map.xain.in.ua/img/photos/');
 }

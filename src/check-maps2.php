@@ -10,11 +10,13 @@
 
 require "lib.php";
 
-$weekAgo = time() - ONE_DAY*7;
+$daysAgo = 30;
+
+$weekAgo = time() - ONE_DAY * $daysAgo;
 
 print_r("File: check-maps2.php \r\n <br>");
 
-for ($i = 0; $i < 7; $i++) {
+for ($i = 0; $i < $daysAgo; $i++) {
 
     $timestamp = $weekAgo + ONE_DAY*$i;
 
