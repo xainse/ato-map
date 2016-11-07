@@ -14,5 +14,8 @@ Thumbs.db
 
 # Project content
 errors.log
+readme.local.txt
 img/photos/*
 img/manualy/*
+img/manualy/
+img/photos/

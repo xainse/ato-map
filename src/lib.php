@@ -10,17 +10,23 @@ define('ONE_DAY', 60*60*24);
 define('ERRORS_FILE','errors.log');
 define('SOURCE_LINK', 'http://mediarnbo.org/wp-content/uploads/');
 
-// if (!empty($_SERVER['SERVER_ADDR']) && $_SERVER['SERVER_ADDR'] == '127.0.0.1') {
-//     define('PATH_SAVE', 'd:\OpenServer\domains\ato-map.dev\img\manualy\\');    
-//} else {
-    define('PATH_SAVE', '/sata1/home/users/onlinegam/www/ato-map.xain.in.ua/img/photos/');   
-//}
+ if (!empty($_SERVER['SERVER_ADDR']) && $_SERVER['SERVER_ADDR'] == '127.0.0.1') {
+     define('PATH_SAVE', 'd:\OpenServer\domains\ato-map.dev\img\manually\\');
+} else {
+    define('PATH_SAVE', '/sata1/home/users/onlinegam/www/ato-map.xain.in.ua/img/photos/');
+}
 
 define('SML_IMG_WIDTH', 300);
 define('HOST', 'http://ato-map.xain.in.ua/');
 
 define('FILE_NAME_PREFIX_BIG', 'big');
 define('FILE_NAME_PREFIX_SML', 'sml');
+
+// const for verification foto
+define('SRC_MIME_TYPE', 'image/jpeg');
+define('SRC_WIDTH', 3000);
+define('SRC_HEIGHT', 2494);
+
 
 /**
   * Link that wasn't be downloaded:
@@ -104,14 +110,43 @@ function getTodayMap() {
  * @return string
  */
 function getLinkToSourceFile($timestamp) {
+
+    $possibleSuffixes = [ '', '-1', '-2'];
+
     $dYear = date('Y', $timestamp);
     $dMonth = date('m', $timestamp);
     $dDay = date('d', $timestamp);
 
-    $url = SOURCE_LINK . $dYear .'/'.$dMonth.'/';
-    $imgName = $dDay.'-'.$dMonth.'.jpg';
+    foreach ($possibleSuffixes as $sufx) {
+        $url = SOURCE_LINK . $dYear .'/'.$dMonth.'/';
+        $imgName = $dDay.'-'.$dMonth.$sufx.'.jpg';
+        wln($url.$imgName);
 
-    return $url.$imgName;
+        if (verifyFileSutability($url.$imgName)) {
+            return $url.$imgName;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Verify Image of map by URL and check params
+ * @param $url
+ * @return bool
+ */
+function verifyFileSutability($url) {
+
+    if (!$fp = curl_init($url)) return false;
+
+    $exifData = exif_read_data($url);
+    if (!empty($exifData['COMPUTED']['Width'])) {
+        return $exifData['MimeType'] == SRC_MIME_TYPE
+            && $exifData['COMPUTED']['Width'] == SRC_WIDTH
+            && $exifData['COMPUTED']['Height'] == SRC_HEIGHT;
+    } else {
+        return false;
+    }
 }
 
 /**
@@ -177,4 +212,9 @@ function wln($var='ok'){
     echo '<pre>';
     print_r($var);
     echo '</pre>';
+}
+
+function we($var="OK") {
+    wln($var);
+    exit;
 }
