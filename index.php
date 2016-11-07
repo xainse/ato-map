@@ -10,7 +10,6 @@
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
   ga('create', 'UA-3233114-18', 'auto');
   ga('send', 'pageview');
 </script>
@@ -23,7 +22,7 @@
 			<span style="float: left; width:1px; height:0; margin: 0 0 0 -100px; overflow: hidden;">
 				<input type="text" value="" id="calendar-date">
 			</span>
-			&copy;&nbsp;2015<?php $y=date('Y');$y!='2015'?'&mdash;'.$y:''?>, <a href="https://github.com/xainse/ato-map" target="_blank">@xainse</a>&nbsp;
+			&copy;&nbsp;2015<?php $y=date('Y'); echo $y!='2015'?'&mdash;'.$y:''?>, <a href="https://github.com/xainse/ato-map" target="_blank">@xainse</a>&nbsp;
 			<a title="ІНФОРМАЦІЙНО-АНАЛІТИЧНИЙ ЦЕНТР - НАЦІОНАЛЬНОЇ БЕЗПЕКИ УКРАЇНИ" href="http://mediarnbo.org/category/photo-video-uk/" target="_blank">www.mediarnbo.org</a>
 		</div>
 	</header>

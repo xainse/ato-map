@@ -10,11 +10,12 @@
 
 require "lib.php";
 
-$daysAgo = 30;
-
+$daysAgo = 7;
 $weekAgo = time() - ONE_DAY * $daysAgo;
 
 print_r("File: check-maps2.php \r\n <br>");
+
+wln("Update map images on site http://ato-map.xain.in.ua/");
 
 for ($i = 0; $i < $daysAgo; $i++) {
 
