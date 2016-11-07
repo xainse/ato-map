@@ -145,4 +145,11 @@ body {
     .conteiner {
         width: 304px;
     }
+
+    .header h1 {
+        font-size: 14px;
+    }
+    .copyright {
+        display: none;
+    }
 }
