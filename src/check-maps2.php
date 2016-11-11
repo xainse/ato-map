@@ -12,9 +12,9 @@ require "lib.php";
 
 $weekAgo = time() - ONE_DAY*7;
 
-print_r("File: check-maps2.php \r\n <br>");
+print_r("File: check-maps2.php \r\n");
 
-for ($i = 0; $i < 7; $i++) {
+for ($i = 0; $i <= 7; $i++) {
 
     $timestamp = $weekAgo + ONE_DAY*$i;
 
@@ -27,8 +27,8 @@ for ($i = 0; $i < 7; $i++) {
 
         copy ($sourceMapFile, PATH_SAVE.$bigMapFile);
         resize(SML_IMG_WIDTH, PATH_SAVE.$smlMapFile, PATH_SAVE.$bigMapFile);
-        wln('Save img: '.$bigMapFile);
+        print_r(($i+1) .' Save img: '.$bigMapFile."\r\n");
     } else {
-        wln('File exist: '.$bigMapFile);
+        print_r(($i+1) .'File exist: '.$bigMapFile."\r\n");
     }
 }
