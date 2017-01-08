@@ -111,7 +111,8 @@ function aMap() {
         // Calc diff between start and finish dates
         var dayDiff = Math.round((finishDate.getTime() - startDate.getTime())/oneDay);
 
-        for (var i=1; i < dayDiff; i++) {
+        for (var i=0; i < dayDiff; i++) {
+        
             var cklDate = new Date(finishDate.getTime() - oneDay * i);
             img[i] = self.getOneImg(cklDate);
         }

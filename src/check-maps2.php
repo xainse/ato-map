@@ -13,11 +13,16 @@ require "lib.php";
 $daysAgo = 7;
 $weekAgo = time() - ONE_DAY * $daysAgo;
 
-print_r("File: check-maps2.php \r\n <br>");
+print_r("http://ato-map.xain.in.ua/ \r\n");
+print_r("File: check-maps2.php \r\n");
 
+<<<<<<< HEAD
 wln("Update map images on site http://ato-map.xain.in.ua/");
 
 for ($i = 0; $i < $daysAgo; $i++) {
+=======
+for ($i = 0; $i <= 7; $i++) {
+>>>>>>> 9517c0f85deb5fad2eb58d090ec8ef3653b65e15
 
     $timestamp = $weekAgo + ONE_DAY*$i;
 
@@ -30,8 +35,8 @@ for ($i = 0; $i < $daysAgo; $i++) {
 
         copy ($sourceMapFile, PATH_SAVE.$bigMapFile);
         resize(SML_IMG_WIDTH, PATH_SAVE.$smlMapFile, PATH_SAVE.$bigMapFile);
-        wln('Save img: '.$bigMapFile);
+        print_r(($i+1) .'. Save img: '.$bigMapFile."\r\n");
     } else {
-        wln('File exist: '.$bigMapFile);
+        print_r(($i+1) .'. File exist: '.$bigMapFile."\r\n");
     }
 }
