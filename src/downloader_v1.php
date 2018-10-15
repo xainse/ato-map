@@ -11,10 +11,10 @@
 require "lib.php";
 
 //downloadAllImgs();
-getTodayMap();
+//getTodayMap();
 
-//getOneMap(strtotime('2016-02-23'));
-//getOneMap(strtotime('2016-02-24'));
+getOneMap(strtotime('2016-02-23'));
+getOneMap(strtotime('2016-02-24'));
 
 //downloadAllImgs();
 

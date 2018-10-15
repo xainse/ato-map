@@ -63,24 +63,21 @@ function downloadAllImgs() {
 function getOneMap($timestamp) {
 
     ini_set("allow_url_fopen", 1);
-
-    $dYear = date('Y', $timestamp);
-    $dMonth = date('m', $timestamp);
-    $dDay = date('d', $timestamp);
-
-    // http://mediarnbo.org/wp-content/uploads/2014/08/13-08.jpg
-    // http://mediarnbo.org/wp-content/uploads/2014/08/15-08.jpg
-    $url = SOURCE_LINK . $dYear .'/'.$dMonth.'/';
-    $imgName = $dDay.'-'.$dMonth.'.jpg';
+    
+    if ($timestamp < strtotime("10-05-2018")) {
+        $image_path = getImgLinkATO_v1($timestamp);
+    } else {
+        $image_path = getImgLinkOOS_v2($timestamp);
+    }
 
     $handle = fopen(ERRORS_FILE, 'w'); // file to write errors
 
     $source = getFilenameOnDiskBig($timestamp);
     $target = getFilenameOnDiskSml($timestamp);
     try {
-        copy ($url.$imgName, PATH_SAVE.$source);
+        copy ($image_path, PATH_SAVE.$source);
     } catch (Exception $e) {
-        $s = "Not exist: " . $url.$imgName."\n";
+        $s = "Not exist: " . $image_path ."\n";
         fwrite($handle,$s);
     }
 
@@ -95,6 +92,34 @@ function getOneMap($timestamp) {
     }
 
     fclose($handle);
+}
+
+// The name of the file changes time to time
+// this is why we will use different functions of generating path
+function getImgLinkATO_v1($timestamp) {
+    // http://mediarnbo.org/wp-content/uploads/2014/08/13-08.jpg
+    // http://mediarnbo.org/wp-content/uploads/2014/08/15-08.jpg
+
+    $dYear = date('Y', $timestamp);
+    $dMonth = date('m', $timestamp);
+    $dDay = date('d', $timestamp);
+
+    $url = SOURCE_LINK . $dYear .'/'.$dMonth.'/';
+    $imgName = $dDay.'-'.$dMonth.'.jpg';
+
+    return $url.$imgName;
+}
+
+function getImgLinkOOS_v2($timestamp) {
+// http://mediarnbo.org/wp-content/uploads/2018/10/10-10-2018-1.jpg
+    $dYear = date('Y', $timestamp);
+    $dMonth = date('m', $timestamp);
+    $dDay = date('d', $timestamp) -1;
+
+    $url = SOURCE_LINK . $dYear .'/'.$dMonth.'/';
+    $imgName = $dDay.'-'.$dMonth.'-'.$dYear.'-1.jpg';
+
+    return $url.$imgName;
 }
 
 /**
